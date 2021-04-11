@@ -7,19 +7,33 @@ console.log("tableData", tableData);
 
 // for now, hardcode a datetime
 
-tableData.forEach(function (item) {
-  console.log(item["datetime"]);
-});
+// tableData.forEach(function (item) {
+//   console.log(item["datetime"]);
+// });
 
 // // next, let's build our js filter(s).
-let date = "az";
-function dateCheck(date) {
-  return date.state === date;
+// let date = "1/7/2010";
+// function dateCheck(arr) {
+//   arr.forEach(item => {
+//     if (arr.datetime === date) {
+//       return arr.datetime;
+//     }
+//   })
+// }
+
+// var testDate = tableData.filter(dateCheck);
+function dateCheck(thing) {
+  return thing.datetime === "1/7/2010";
 }
-
-var testDate = tableData.filter(dateCheck);
-
+var testDate = tableData.filter(dateCheck)
 console.log(testDate);
+
+function stateCheck(thing) {
+  return thing.state === "ca";
+}
+var testState = tableData.filter(stateCheck);
+console.log(testState);
+
 // // filter right? You only want elts with that date.
 // tableData.filter((datum) => {
 //   // optional: check if the datetime key exists
