@@ -7,9 +7,9 @@ console.log("tableData", tableData);
 
 // for now, hardcode a datetime
 
-// tableData.forEach(function (item) {
-//   console.log(item["datetime"]);
-// });
+tableData.forEach(function (item) {
+  console.log(item["datetime"]);
+});
 
 // // next, let's build our js filter(s).
 // let date = "1/7/2010";
@@ -22,18 +22,22 @@ console.log("tableData", tableData);
 // }
 
 // var testDate = tableData.filter(dateCheck);
+var date = "1/1/2010"
 function dateCheck(thing) {
-  return thing.datetime === "1/7/2010";
+  return thing.datetime === date;
 }
 var testDate = tableData.filter(dateCheck)
 console.log(testDate);
 
+var state = "ca"
 function stateCheck(thing) {
-  return thing.state === "ca";
+  return thing.state === state;
 }
 var testState = tableData.filter(stateCheck);
 console.log(testState);
 
+var arrCombo = tableData.filter(rec => {return rec.datetime === date;}).filter(rec => {return rec.state === state;});
+console.log("This is my new date and state filter", arrCombo);
 // // filter right? You only want elts with that date.
 // tableData.filter((datum) => {
 //   // optional: check if the datetime key exists
@@ -59,3 +63,17 @@ console.log(testState);
 //     tr.append("td").text(rec.city);
 //   })
 // );
+
+
+// for bonus
+
+//arr1 = arr.filter(dt...)
+//arr2 = arr1.filter(city === to city)
+//arr3 = arr2.filter(state === ...)
+
+// can also try to chain them
+//arr1 = arr.filter(dt...).filter(city...)
+// in the starterCode folder where Index is, activate conda and
+// type python -m http.server
+// this will create a server and click on the link and it will open
+// the html file.  This is alternative for liveserver
