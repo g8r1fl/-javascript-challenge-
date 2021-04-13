@@ -7,8 +7,24 @@ console.log("tableData", tableData);
 
 // for now, hardcode a datetime
 
-tableData.forEach(function (item) {
-  console.log(item["datetime"]);
+// tableData.forEach(function (item) {
+//   console.log(item["datetime"]);
+// });
+
+//build the table on html
+let filtered = tableData.slice(0,10);
+
+let table = d3.select("tbody");
+
+filtered.forEach(row => {
+  let tr = table.append("tr");
+  tr.append("td").text(row[0]);
+  tr.append("td").text(row[1]);
+  tr.append("td").text(row[2]);
+  tr.append("td").text(row[3]);
+  tr.append("td").text(row[4]);
+  tr.append("td").text(row[5]);
+
 });
 
 // // next, let's build our js filter(s).
@@ -36,7 +52,9 @@ function stateCheck(thing) {
 var testState = tableData.filter(stateCheck);
 console.log(testState);
 
-var arrCombo = tableData.filter(rec => {return rec.datetime === date;}).filter(rec => {return rec.state === state;});
+var arrCombo = tableData.filter(rec => {
+  return rec.datetime === date;}).filter(rec => {
+    return rec.state === state;});
 console.log("This is my new date and state filter", arrCombo);
 // // filter right? You only want elts with that date.
 // tableData.filter((datum) => {
