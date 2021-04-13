@@ -16,15 +16,18 @@ let filtered = tableData.slice(0,10);
 
 let table = d3.select("tbody");
 
-filtered.forEach(row => {
-  let tr = table.append("tr");
-  tr.append("td").text(row[0]);
-  tr.append("td").text(row[1]);
-  tr.append("td").text(row[2]);
-  tr.append("td").text(row[3]);
-  tr.append("td").text(row[4]);
-  tr.append("td").text(row[5]);
+// tbody.html("");
 
+filtered.forEach(row => {
+  table.html("");
+  let tr = table.append("tr");
+  tr.append("td").text(row.datetime);
+  tr.append("td").text(row.city);
+  tr.append("td").text(row.state);
+  tr.append("td").text(row.country);
+  tr.append("td").text(row.shape);
+  tr.append("td").text(row.duration);
+  tr.append("td").text(row.comments);
 });
 
 // // next, let's build our js filter(s).
