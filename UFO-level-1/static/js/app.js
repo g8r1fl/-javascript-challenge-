@@ -11,24 +11,7 @@ console.log("tableData", tableData);
 //   console.log(item["datetime"]);
 // });
 
-//build the table on html
-let filtered = tableData.slice(0,10);
 
-let table = d3.select("tbody");
-
-// tbody.html("");
-
-filtered.forEach(row => {
-  table.html("");
-  let tr = table.append("tr");
-  tr.append("td").text(row.datetime);
-  tr.append("td").text(row.city);
-  tr.append("td").text(row.state);
-  tr.append("td").text(row.country);
-  tr.append("td").text(row.shape);
-  tr.append("td").text(row.duration);
-  tr.append("td").text(row.comments);
-});
 
 // // next, let's build our js filter(s).
 // let date = "1/7/2010";
@@ -67,6 +50,34 @@ console.log("This is my new date and state filter", arrCombo);
 // });
 
 // // YOUR CODE HERE!
+//build the table on html
+let filtered = tableData.slice(0,2);
+
+let table = d3.select("tbody");
+
+// tbody.html("");
+//loop through filtered data rows to build table rows
+filtered.forEach(row => {
+  // clear out any tables existing
+  
+  // Object.value(row).forEach(rec => {
+  //   console.log(rec.datetime);
+  // })
+  console.log(row.datetime);
+  console.log(row.city);
+  console.log(row.state);
+
+
+  //loop through each element in the row and add the data
+  //add a row
+  // const tr = table.append("tr");
+  
+  // Object.value(row).forEach(rec => {
+  //   console.log(rec);
+  // })
+});
+
+
 // let filteredData = tableData.slice(0, 10);
 
 // let table = d3.select("tbody");
