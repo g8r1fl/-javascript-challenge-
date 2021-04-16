@@ -51,7 +51,7 @@ console.log("This is my new date and state filter", arrCombo);
 
 // // YOUR CODE HERE!
 //build the table on html
-let filtered = tableData.slice(0,10);
+let filtered = tableData.slice(0,5);
 
 let table = d3.select("tbody");
 
@@ -71,7 +71,7 @@ function buildTable(arr) {
 
 }
 
-buildTable(filtered);
+buildTable(tableData);
 
 // filtered.forEach(row => {
 //   // clear out any tables existing
