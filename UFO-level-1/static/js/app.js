@@ -22,26 +22,28 @@ console.log("tableData", tableData);
 //     }
 //   })
 // }
-
+// var checkDate = tableData.filter(dateCheck);
+// console.log(checkDate);
 // var testDate = tableData.filter(dateCheck);
-var date = "1/1/2010"
-function dateCheck(thing) {
-  return thing.datetime === date;
+// date = "1/1/2020";
+var date = d3.select("#datetime").property("value");
+function dateCheck(arr) {
+  return arr.datetime === date;
 }
-var testDate = tableData.filter(dateCheck)
-console.log(testDate);
+// var testDate = tableData.filter(dateCheck)
+// console.log(testDate);
 
-var state = "ca"
-function stateCheck(thing) {
-  return thing.state === state;
+var state = "ny";
+function stateCheck(arr) {
+  return arr.state === state;
 }
 var testState = tableData.filter(stateCheck);
 console.log(testState);
 
-var arrCombo = tableData.filter(rec => {
-  return rec.datetime === date;}).filter(rec => {
-    return rec.state === state;});
-console.log("This is my new date and state filter", arrCombo);
+// var arrCombo = tableData.filter(rec => {
+//   return rec.datetime === date;}).filter(rec => {
+//     return rec.state === state;});
+// console.log("This is my new date and state filter", arrCombo);
 // // filter right? You only want elts with that date.
 // tableData.filter((datum) => {
 //   // optional: check if the datetime key exists
@@ -49,9 +51,9 @@ console.log("This is my new date and state filter", arrCombo);
 //   console.log(datum.datetime === date);
 // });
 
-// // YOUR CODE HERE!
-//build the table on html
-let filtered = tableData.slice(0,5);
+// // // YOUR CODE HERE!
+// //build the table on html
+// let filtered = tableData.filter(dateCheck);
 
 let table = d3.select("tbody");
 
@@ -67,10 +69,10 @@ function buildTable(arr) {
     Object.values(row).forEach(rec => {
       tr.append("td").text(rec);
     });
+    console.log("Table built!");
   })
 
 }
-
 buildTable(tableData);
 
 var button = d3.select("button");
@@ -79,12 +81,15 @@ var inputValue = inputElement.property("value");
 
 function handleClick() {
   console.log("A button was clicked!");
-  var inputElement = d3.select("#datetime");
-  var inputValue = inputElement.property("value");
-  console.log(inputValue);
+  var date = d3.select("#datetime").property("value");
+  console.log(date);
+  let filtered = tableData;
   
-  // We can use d3 to see the object that dispatched the event
-  console.log(d3.event.target);
+  if (date) {
+    filtered = filtered.filter(row => {row.datetime === date})
+  };
+  buildTable(filtered);
+  console.log("Filtered table built!");
 }
 button.on("click", handleClick);
 // d3.select("button").on("click", () =>
