@@ -26,19 +26,19 @@ console.log("tableData", tableData);
 // console.log(checkDate);
 // var testDate = tableData.filter(dateCheck);
 // date = "1/1/2020";
-var date = d3.select("#datetime").property("value");
-function dateCheck(arr) {
-  return arr.datetime === date;
-}
-// var testDate = tableData.filter(dateCheck)
-// console.log(testDate);
+// var date = d3.select("#datetime").property("value");
+// function dateCheck(arr) {
+//   return arr.datetime === date;
+// }
+// // var testDate = tableData.filter(dateCheck)
+// // console.log(testDate);
 
-var state = "ny";
-function stateCheck(arr) {
-  return arr.state === state;
-}
-var testState = tableData.filter(stateCheck);
-console.log(testState);
+// var state = "ny";
+// function stateCheck(arr) {
+//   return arr.state === state;
+// }
+// var testState = tableData.filter(stateCheck);
+// console.log(testState);
 
 // var arrCombo = tableData.filter(rec => {
 //   return rec.datetime === date;}).filter(rec => {
@@ -55,7 +55,7 @@ console.log(testState);
 // //build the table on html
 // let filtered = tableData.filter(dateCheck);
 
-let table = d3.select("tbody");
+const table = d3.select("tbody");
 
 // tbody.html("");
 //loop through filtered data rows to build table rows
@@ -73,25 +73,28 @@ function buildTable(arr) {
   })
 
 }
-buildTable(tableData);
 
-var button = d3.select("button");
-var inputElement = d3.select("#datetime");
-var inputValue = inputElement.property("value");
+
+// var button = d3.select("button");
+// var inputElement = d3.select("#datetime");
+// var inputValue = inputElement.property("value");
 
 function handleClick() {
   console.log("A button was clicked!");
-  var date = d3.select("#datetime").property("value");
+  const date = d3.select("#datetime").property("value");
   console.log(date);
   let filtered = tableData;
   
   if (date) {
-    filtered = filtered.filter(row => {row.datetime === date})
-  };
+    filtered = filtered.filter(row => row.datetime === date)
+  }
   buildTable(filtered);
   console.log("Filtered table built!");
 }
-button.on("click", handleClick);
+
+buildTable(tableData);
+
+d3.select("button").on("click", handleClick);
 // d3.select("button").on("click", () =>
 //   // filteredData.forEach((rec) => {
 //   //   let tr = table.html("").append("tr");
