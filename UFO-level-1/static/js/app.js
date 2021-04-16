@@ -74,11 +74,15 @@ function buildTable(arr) {
 buildTable(tableData);
 
 var button = d3.select("button");
-var inputField = d3.select("input");
+var inputElement = d3.select("#datetime");
+var inputValue = inputElement.property("value");
 
 function handleClick() {
   console.log("A button was clicked!");
-
+  var inputElement = d3.select("#datetime");
+  var inputValue = inputElement.property("value");
+  console.log(inputValue);
+  
   // We can use d3 to see the object that dispatched the event
   console.log(d3.event.target);
 }
