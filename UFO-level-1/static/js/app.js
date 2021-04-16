@@ -73,6 +73,23 @@ function buildTable(arr) {
 
 buildTable(tableData);
 
+var button = d3.select("button");
+var inputField = d3.select("input");
+
+function handleClick() {
+  console.log("A button was clicked!");
+
+  // We can use d3 to see the object that dispatched the event
+  console.log(d3.event.target);
+}
+button.on("click", handleClick);
+// d3.select("button").on("click", () =>
+//   // filteredData.forEach((rec) => {
+//   //   let tr = table.html("").append("tr");
+//   //   tr.append("td").text(rec.datetime);
+//   //   tr.append("td").text(rec.city);
+//   // })
+// );
 // filtered.forEach(row => {
 //   // clear out any tables existing
   
